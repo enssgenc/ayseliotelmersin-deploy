@@ -1,0 +1,29 @@
+/* Theme the official widget inside Ayseli's existing booking card. */
+.booking.booking-reseliva { grid-template-columns: minmax(130px, .8fr) minmax(0, 4fr); gap: 24px; }
+#reseliva-widget { min-width: 0; font-family: var(--sans); font-size: 14px; }
+#reseliva-widget .formBar { display: grid !important; grid-template-columns: minmax(270px, 1.5fr) minmax(190px, 1fr) minmax(145px, .8fr); gap: 12px; }
+#reseliva-widget .formBar > div { min-width: 0; width: 100%; border: 1px solid #dce0d5 !important; border-radius: 4px; background: #fff !important; }
+#reseliva-widget .formBar > .res-datepicker-wrap:first-of-type { padding: 8px 10px !important; gap: 10px; }
+#reseliva-widget .res-item { flex: 1; flex-wrap: wrap; min-width: 0; max-width: 50%; }
+#reseliva-widget .res-item > .lnr { display: none; }
+#reseliva-widget .reseliva-date-label { width: 100%; border: 0; padding: 0; color: #626d5b; font-size: 10px; line-height: 1.5; text-transform: uppercase; letter-spacing: .7px; }
+#reseliva-widget .res-item input { width: 100%; max-width: 100%; padding: 0 !important; font-size: 14px; color: #203c31 !important; letter-spacing: .3px; }
+#reseliva-widget .formBar > .res-datepicker-wrap:last-of-type { padding: 0 !important; border: 0 !important; background: transparent !important; }
+#reseliva-widget .res-btn { min-width: 0; min-height: 61px; border-radius: 4px; font-size: 12px !important; font-weight: 500; letter-spacing: .7px; }
+#reseliva-widget .res-div-wrap { padding: 8px !important; }
+#reseliva-widget .res-div { padding: 0 5px !important; font-size: 13px; }
+#reseliva-widget .divPersons { z-index: 30; min-width: 220px; border-radius: 4px; box-shadow: 0 8px 24px #203c3126; }
+#reseliva-widget :focus-visible { outline: 2px solid #9c8151; outline-offset: 3px; }
+.booking-note.reseliva-note { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 18px; }
+.reseliva-note a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+#reseliva-error:empty { display: none; }
+#reseliva-error { width: 100%; color: #9f3024; }
+@media (max-width: 1100px) {
+  .booking.booking-reseliva { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  #reseliva-widget .formBar { grid-template-columns: 1fr; }
+  #reseliva-widget .res-div-wrap { min-height: 52px; }
+  #reseliva-widget .res-btn { min-height: 49px; }
+  #reseliva-widget .res-item input { font-size: 16px !important; }
+}
