@@ -12,6 +12,10 @@ if OUT.exists():
 shutil.copytree(BASE, OUT)
 for p in IMG.glob('*.webp'):
     shutil.copy2(p, OUT / 'images' / p.name)
+# og:image / twitter:image / schema.org image -> /images/hero.jpg (onceden 404 donuyordu).
+# Lobi fotografinin 1200x630 kirpimi.
+assert not (OUT / 'images' / 'hero.jpg').exists()
+shutil.copy2(IMG / 'hero.jpg', OUT / 'images' / 'hero.jpg')
 
 OLD_CHUNK = 'ayseli-page-c8ccbb278e70.js'
 chunk_path = OUT / '_next/static/chunks' / OLD_CHUNK
@@ -96,11 +100,11 @@ for p in OUT.rglob('*'):
         assert OLD_CHUNK not in p.read_text(encoding='utf-8', errors='ignore'), p
 
 rel = json.loads((OUT / 'ayseli-release.json').read_text(encoding='utf-8'))
-rel.update({'release': 'ayseli-photos-20261111', 'base_release': 'ayseli-contact-20261026',
+rel.update({'release': 'ayseli-photos-og-20261111', 'base_release': 'ayseli-contact-20261026',
             'page_chunk': new_chunk, 'files': sum(p.is_file() for p in OUT.rglob('*'))})
 (OUT / 'ayseli-release.json').write_text(json.dumps(rel, ensure_ascii=False, indent=2), encoding='utf-8')
 
-archive = ROOT / 'build' / 'ayseli-photos-release.tar.gz'
+archive = ROOT / 'build' / 'ayseli-photos-og-release.tar.gz'
 with tarfile.open(archive, 'w:gz') as tar:
     for p in sorted(OUT.rglob('*')):
         if p.is_file():
